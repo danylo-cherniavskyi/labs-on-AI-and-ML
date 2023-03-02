@@ -9,7 +9,7 @@ Using random number generator fill in array with:
 2. integers in range [-10; 10]
 3. positive integers in range [0; 50]
 
-Given array of random numbers [a_1, ..., a_n], n is given by user.
+Given array of random numbers [a<sub>1</sub>, ..., a<sub>n</sub>], n is given by user.
 
 Variant - 21: Write a program to create another array in which all elements are cyclically shifted by k elements to the left (e.g. k=1, [a<sub>2</sub>, ..., a<sub>n</sub>, a<sub>1</sub>]).
 
