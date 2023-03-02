@@ -11,7 +11,7 @@ Using random number generator fill in array with:
 
 Given array of random numbers [a_1, ..., a_n], n is given by user.
 
-Variant - 21: Write a program to create another array in which all elements are shifted by k elements to the left (e.g. k=1, [a<sub>2</sub>, ..., a<sub>n</sub>, a<sub>1</sub>]).
+Variant - 21: Write a program to create another array in which all elements are cyclically shifted by k elements to the left (e.g. k=1, [a<sub>2</sub>, ..., a<sub>n</sub>, a<sub>1</sub>]).
 
 ## Task 2
 
