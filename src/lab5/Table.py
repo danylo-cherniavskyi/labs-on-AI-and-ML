@@ -1,4 +1,5 @@
 from tkinter import ttk
+import numpy as np
 
 class Table:
     def __resize_table(self, col_num: int):
@@ -13,6 +14,17 @@ class Table:
         if len(self.__table.get_children()) > 0:
             self.__table.delete(self.__table.get_children()[0])
         self.__table.insert('', 0, text='', values=tuple(array))
+
+    def show_matrix(self, matrix: np.ndarray):
+        self.__resize_table(len(matrix.max(0)))
+
+        for (idx, el) in enumerate(matrix.max(0)):
+            self.__table.heading(idx, text=f'{idx}', anchor='center')
+            self.__table.column(idx, anchor='center', width=10)
+
+        while len(self.__table.get_children()) > 0:
+            self.__table.delete(self.__table.get_children()[0])
+        np.apply_along_axis(lambda row: self.__table.insert('', 'end', text='', values=tuple(row)), axis=1, arr=matrix)
 
     def __init__(self, master):
         table = ttk.Treeview(master)
