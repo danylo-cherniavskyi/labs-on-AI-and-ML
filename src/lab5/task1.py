@@ -13,5 +13,5 @@ def shift(array: np.ndarray, k: int) -> np.ndarray:
     bounded_k = k % len(array)
 
     [first_k, rest] = np.split(array, [bounded_k])
-    rest.append(first_k)
-    return rest
+    res = np.append(rest, first_k)
+    return res
