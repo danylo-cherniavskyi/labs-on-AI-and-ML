@@ -74,7 +74,7 @@ class Task1(tk.Frame):
         self.buttons_frame = tk.Frame(self)
         self.buttons_frame.pack()
 
-        self.random_button1 = tk.Button(self.buttons_frame, text="Random [0;1]", command=self.randomize_array_01)
+        self.random_button1 = tk.Button(self.buttons_frame, text="Random [0.0;1.0]", command=self.randomize_array_01)
         self.random_button1.pack(side='left')
         self.random_button2 = tk.Button(self.buttons_frame, text="Random [-10;10]", command=self.randomize_array_int10)
         self.random_button2.pack(side='left')
@@ -132,21 +132,25 @@ class Task2(tk.Frame):
         self.column_count = 2
         self.matrix = []
 
-        self.buttons_frame = tk.Frame(self)
-        self.buttons_frame.pack()
+        self.buttons_frame1 = tk.Frame(self)
+        self.buttons_frame1.pack()
 
-        self.random_button1 = tk.Button(self.buttons_frame, text="Random [0;1]", command=self.randomize_matrix_01)
+        self.task1_button = tk.Button(self.buttons_frame1, text='<- Task 1', command=lambda: controller.show_frame(Task1))
+        self.task1_button.pack(side='left')
+        self.random_button1 = tk.Button(self.buttons_frame1, text="Random [0.0;1.0]", command=self.randomize_matrix_01)
         self.random_button1.pack(side='left')
-        self.random_button2 = tk.Button(self.buttons_frame, text="Random [-10;10]", command=self.randomize_matrix_int10)
+        self.random_button2 = tk.Button(self.buttons_frame1, text="Random [-10;10]", command=self.randomize_matrix_int10)
         self.random_button2.pack(side='left')
-        self.random_button3 = tk.Button(self.buttons_frame, text="Random [0;50]", command=self.randomize_matrix_int0_20)
+
+        self.buttons_frame2 = tk.Frame(self)
+        self.buttons_frame2.pack()
+
+        self.random_button3 = tk.Button(self.buttons_frame2, text="Random [0;20]", command=self.randomize_matrix_int0_20)
         self.random_button3.pack(side='left')
-        self.random_button4 = tk.Button(self.buttons_frame, text="Random [0;50]", command=self.randomize_matrix_10)
+        self.random_button4 = tk.Button(self.buttons_frame2, text="Random [-10.0;10.0]", command=self.randomize_matrix_10)
         self.random_button4.pack(side='left')
-        self.execute_button = tk.Button(self.buttons_frame, text="Execute", command=self.execute_task)
-        self.execute_button.pack(side='bottom')
-        self.task1_button = tk.Button(self.buttons_frame, text='<- Task 1', command=lambda: controller.show_frame(Task1))
-        self.task1_button.pack(side='bottom')
+        self.execute_button = tk.Button(self.buttons_frame2, text="Execute", command=self.execute_task)
+        self.execute_button.pack(side='left')
 
         self.row_count_spinbox_label = tk.Label(self, text='Choose amount rows: ')
         self.row_count_spinbox_label.pack()
