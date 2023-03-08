@@ -98,6 +98,27 @@ class Task1(tk.Frame):
         self.table = Table.Table(self)
 
 class Task2(tk.Frame):
+    def randomize_matrix_01(self):
+        self.matrix = task2.randomize_matrix_01(self.column_count, self.row_count)
+        self.table.show_matrix(self.matrix)
+
+    def randomize_matrix_int10(self):
+        self.matrix = task2.randomize_matrix_int10(self.column_count, self.row_count)
+        self.table.show_matrix(self.matrix)
+
+    def randomize_matrix_int0_20(self):
+        self.matrix = task2.randomize_matrix_int0_20(self.column_count, self.row_count)
+        self.table.show_matrix(self.matrix)
+
+    def randomize_matrix_10(self):
+        self.matrix = task2.randomize_matrix_10(self.column_count, self.row_count)
+        self.table.show_matrix(self.matrix)
+
+    def execute_task(self):
+        self.matrix = task2.swap_rows(self.matrix)
+        self.table.show_matrix(self.matrix)
+        self.table.highlight_rows()
+
     def on_row_count_spinbox_update(self):
         self.row_count = int(self.row_count_spinbox.get())
 
@@ -111,6 +132,22 @@ class Task2(tk.Frame):
         self.column_count = 2
         self.matrix = []
 
+        self.buttons_frame = tk.Frame(self)
+        self.buttons_frame.pack()
+
+        self.random_button1 = tk.Button(self.buttons_frame, text="Random [0;1]", command=self.randomize_matrix_01)
+        self.random_button1.pack(side='left')
+        self.random_button2 = tk.Button(self.buttons_frame, text="Random [-10;10]", command=self.randomize_matrix_int10)
+        self.random_button2.pack(side='left')
+        self.random_button3 = tk.Button(self.buttons_frame, text="Random [0;50]", command=self.randomize_matrix_int0_20)
+        self.random_button3.pack(side='left')
+        self.random_button4 = tk.Button(self.buttons_frame, text="Random [0;50]", command=self.randomize_matrix_10)
+        self.random_button4.pack(side='left')
+        self.execute_button = tk.Button(self.buttons_frame, text="Execute", command=self.execute_task)
+        self.execute_button.pack(side='bottom')
+        self.task1_button = tk.Button(self.buttons_frame, text='<- Task 1', command=lambda: controller.show_frame(Task1))
+        self.task1_button.pack(side='bottom')
+
         self.row_count_spinbox_label = tk.Label(self, text='Choose amount rows: ')
         self.row_count_spinbox_label.pack()
         self.row_count_spinbox = tk.Spinbox(self, from_=2, to=10, textvariable=tk.StringVar(self, f'{self.row_count}'), command=self.on_row_count_spinbox_update)
@@ -121,9 +158,7 @@ class Task2(tk.Frame):
         self.column_count_spinbox = tk.Spinbox(self, from_=2, to=10, textvariable=tk.StringVar(self, f'{self.column_count}'), command=self.on_column_count_spinbox_update)
         self.column_count_spinbox.pack()
 
-        self.task1_button = tk.Button(self, text='<- Task 1', command=lambda: controller.show_frame(Task1))
-        self.task1_button.pack()
-
+        self.table = Table.Table(self)
 
 def main():
     app = App()
