@@ -59,8 +59,13 @@ class App(tk.Tk):
         self.output_amt = 1
         np.set_printoptions(edgeitems=self.output_len)
 
-        self.spinbox = tk.Spinbox(self, from_=1, to=int(len(lab_funcs.lfw_pairs_dataset.pairs) * 0.75), textvariable=tk.StringVar(self, f'{self.k}'), command=self.on_k_spinbox_update)
-        self.spinbox.pack()
+        self.spinbox_frame = tk.Frame(self)
+        self.spinbox_label = tk.Label(self.spinbox_frame, text='Enter k: ')
+        self.spinbox_label.pack(side='left')
+        self.spinbox = tk.Spinbox(self.spinbox_frame, from_=1, to=int(len(lab_funcs.lfw_pairs_dataset.pairs) * 0.75), textvariable=tk.StringVar(self, f'{self.k}'), command=self.on_k_spinbox_update)
+        self.spinbox.pack(side='left')
+        self.spinbox_frame.pack()
+
         self.button_frame = tk.Frame(self)
 
         self.output_len_button = tk.Button(self.button_frame, text="Print more values", command=self.on_output_len_button_click)
